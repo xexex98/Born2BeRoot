@@ -197,25 +197,25 @@ https://help.ubuntu.ru/wiki/руководство_по_ubuntu_server/безоп
 	// скрипт c командами файле monitoring.sh
 
 #### 2. СКРИПТ
-  #!/bin/bash
-  wall $'#Architecture :' `uname -a`\
-  $'\n#CPU physical :' `nproc`\
-  $'\n#vCPU :' `cat /proc/cpuinfo | grep processor | wc -l`\
-  $'\n'`free -m | grep Mem | awk '{printf "#Memory Usage : %s/%sMB (%.2f%%)", $3,$2,$3*100/$2}'`\
-  $'\n'`df -h | grep root | awk '{printf "#Disk Usage : %d/%dGB (%s)", $3,$2,$5}'`\
-  $'\n'` top -bn1 | grep %Cpu | cut -c 9- | xargs | awk '{printf "#CPU load : %.1f%%", $1 + $3}'`\
-  $'\n'` who -b | awk '{printf "#Last boot : %s %s", $3,$4} '`\
-  $'\n#LVMuse :' `lsblk | grep lvm | awk '{if ($1) {printf"yes";exit;} else {prinft"no"}}'`\
-  $'\n#Connections TCP :' `netstat | grep ESTABLISHED | wc -l | awk '{printf "%i ESTABLISHED", $1}'`\
-  $'\n#User log :' `who | cut -d " " -f1 | wc -l`\
-  $'\n#Network :' `hostname -I | awk '{printf"IP %s", $1}'` `ip a | grep link/ether | awk '{printf "(%s)", $2}'`\
-  $'\n#Sudo :' `journalctl _COMM=sudo | grep COMMAND | wc -l | awk '{printf"%s cmd", $1}'`\
+	#!/bin/bash
+	wall $'#Architecture :' `uname -a`\
+	$'\n#CPU physical :' `nproc`\
+	$'\n#vCPU :' `cat /proc/cpuinfo | grep processor | wc -l`\
+	$'\n'`free -m | grep Mem | awk '{printf "#Memory Usage : %s/%sMB (%.2f%%)", $3,$2,$3*100/$2}'`\
+	$'\n'`df -h | grep root | awk '{printf "#Disk Usage : %d/%dGB (%s)", $3,$2,$5}'`\
+	$'\n'` top -bn1 | grep %Cpu | cut -c 9- | xargs | awk '{printf "#CPU load : %.1f%%", $1 + $3}'`\
+	$'\n'` who -b | awk '{printf "#Last boot : %s %s", $3,$4} '`\
+	$'\n#LVMuse :' `lsblk | grep lvm | awk '{if ($1) {printf"yes";exit;} else {prinft"no"}}'`\
+	$'\n#Connections TCP :' `netstat | grep ESTABLISHED | wc -l | awk '{printf "%i ESTABLISHED", $1}'`\
+	$'\n#User log :' `who | cut -d " " -f1 | wc -l`\
+	$'\n#Network :' `hostname -I | awk '{printf"IP %s", $1}'` `ip a | grep link/ether | awk '{printf "(%s)", $2}'`\
+	$'\n#Sudo :' `journalctl _COMM=sudo | grep COMMAND | wc -l | awk '{printf"%s cmd", $1}'`\
 
 
 #### 3. НАСТРОЙКА CRON
 	// добавляем скрипт в расписание (кадые 10 мин)
 	$crontab -e
-	*/10 * * * *  /usr/local/bin/monitoring.sh
+	*/10 * * * *  bash /usr/local/bin/monitoring.sh
   
    ## ЧАСТЬ IV
   #### БOНУСЫ
