@@ -94,7 +94,7 @@ https://help.ubuntu.ru/wiki/руководство_по_ubuntu_server/безоп
 
 #### 4.	ДОСТУП ЧЕРЕЗ ТЕРМИНАЛ
 	Проброс портов в virtualbox
-  $Settings->Network->Advanced->Port_Forvarding->Add_new_Port_Forwarding_Rule->127.0.0.1 Host_Port 4242 Guest_Port 4242;
+ 	$Settings->Network->Advanced->Port_Forvarding->Add_new_Port_Forwarding_Rule->127.0.0.1 Host_Port 4242 Guest_Port 4242;
 	$ssh <user>@localhost -p 4242
 	если не получается возможно проблема из-за множества виртуальных машин на которых мы разворачивали систему
 	тогда на маке в файле /Users/"username"/.ssh/known_hosts коментим последине записи наычинающиеся на localhost или 127.0.0.1
