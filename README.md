@@ -265,8 +265,8 @@ https://help.ubuntu.ru/wiki/руководство_по_ubuntu_server/безоп
 #### 4.	УСТАНОВКА WORDPRESS
 	// заходим под рут
 	$su -
-  // расширение для загрузги через ссылки
-  sudo apt install wget
+	// расширение для загрузги через ссылки
+  	sudo apt install wget
 	// скачиваем вордпресс
 	$wget https://ru.wordpress.org/latest-ru_RU.tar.gz
 	// копируем его в папку сервера
